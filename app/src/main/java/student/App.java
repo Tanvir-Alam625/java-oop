@@ -81,10 +81,10 @@ public class App {
                 if (ch == 27) {
                     int c2 = reader.read();
                     int c3 = reader.read();
-                    if (c2 == 91 && c3 == 65) {
+                    if (c2 == 91 && c3 == 68) {
                         selected = (selected - 1 + options.length) % options.length;
                     }
-                    if (c2 == 91 && c3 == 66) {
+                    if (c2 == 91 && c3 == 67) {
                         selected = (selected + 1) % options.length;
                     }
                 } else if (ch == 10 || ch == 13) {
@@ -97,7 +97,7 @@ public class App {
     }
 
     private static void renderMenuSingleLine(Terminal terminal, String[] options, int selected) {
-        StringBuilder line = new StringBuilder("\r\033[2KUse ↑/↓ and Enter: ");
+        StringBuilder line = new StringBuilder("\r\033[2KUse ←/→ and Enter: ");
         for (int i = 0; i < options.length; i++) {
             if (i == selected) {
                 line.append("\u001B[7m>").append(options[i]).append("<\u001B[0m");
