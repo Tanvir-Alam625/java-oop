@@ -4,11 +4,28 @@
 package student;
 
 import java.io.IOException;
+import java.util.Scanner;
 import calculator.CalculatorConsoleService;
+import studentinfo.StudentInfoConsoleService;
 
 public class App {
 
     public static void main(String[] args) throws IOException {
-        new CalculatorConsoleService().run();
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Choose module: 1) Calculator 2) StudentInfo");
+            String input = scanner.nextLine().trim();
+            int serviceChoice = Integer.parseInt(input);
+            switch (serviceChoice) {
+                case 1:
+                    new CalculatorConsoleService().run();
+                    break;
+                case 2:
+                    new StudentInfoConsoleService().run();
+                    break;
+                default:
+                    System.out.println("Service not found for choice: " + serviceChoice);
+                    break;
+            }
+        }
     }
 }
